@@ -10,6 +10,12 @@ public class StepsManager implements Comparable<StepsManager> {
 
 
     public int add(int day, int steps) {
+        if (day < 1 || day > 365) {
+            throw new IllegalDayException();
+        }
+        if (steps < 0) {
+            throw new IllegalStepsException();
+        }
         if (stPerDay.containsKey(day)) {
             stPerDay.put(day, steps + stPerDay.get(day));
         } else {
